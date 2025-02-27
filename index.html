@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,15 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
 </head>
+
 <body>
-    <iframe src="https://www.chatbase.co/chatbot-iframe/7ZtgNrMsQNhC1hOPWDyPQ" width="100%"
-        style="height: 40%; min-height: 700px; margin:40px" frameborder="0"></iframe>
+    <iframe src="https://www.chatbase.co/chatbot-iframe/7ZtgNrMsQNhC1hOPWDyPQ" width="40%"
+        style="height: 40%; min-height: 700px; margin: 40px" frameborder="0"></iframe>
 
     <div class="chat-container">
         <div id="chatBox"></div>
         <input type="text" id="usernameInput" placeholder="Enter your name">
         <input type="text" id="messageInput" placeholder="Type a message">
-        <input type="file" id="imageInput" accept="image/*">
-        <button id="upload img">Upload</button>
         <button id="sendBtn">Send</button>
         <button id="joinBtn">Join</button>
         <ul id="userList"></ul>
@@ -24,5 +24,6 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
 
