@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
+    
+    <div class="relative w-96 p-8 bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 transition-all duration-500 hover:scale-105">
+        <div class="flex flex-col items-center">
+            <h2 class="text-2xl font-semibold text-cyan-300">EchoAI</h2>
+            <p class="text-cyan-500 text-sm mt-2">"Where AI Meets Real-Time Conversations!"</p>
+        </div>
+
+        <div class="flex justify-center mt-6">
+            <button class="tab-button active w-1/2 py-2 text-white bg-cyan-600 rounded-l-lg" id="signup-tab">Sign Up</button>
+            <button class="tab-button w-1/2 py-2 text-gray-300 bg-gray-700 rounded-r-lg" id="login-tab">Login</button>
+        </div>
+
+        <div class="flex justify-center mt-4">
+            <label for="imageInput" class="relative cursor-pointer">
+                <img src="sc.png" class="w-24 h-24 rounded-full border-4 border-cyan-400 shadow-lg" id="profile-pic">
+            </label>
+            <input type="file" id="imageInput" accept="image/*" class="hidden">
+        </div>
+
+        <form id="signup-form" class="form mt-4 flex flex-col gap-4">
+            <input type="text" id="signup-name" placeholder="Full Name" class="input-field" required>
+            <input type="email" id="signup-email" placeholder="Email" class="input-field" required>
+            <input type="password" id="signup-password" placeholder="Password" class="input-field" required> 
+            <div class="text-sm text-red-400 hidden" id="password-message"></div>
+            <input type="password" id="confirm-password" placeholder="Confirm Password" class="input-field" required>
+            <button type="submit" class="auth-button">Sign Up</button>
+        </form>
+
+        <form id="login-form" class="form mt-4 flex flex-col gap-4 hidden">
+            <input type="email" id="login-email" placeholder="Email" class="input-field" required>
+            <input type="password" id="login-password" placeholder="Password" class="input-field" required>
+            <button type="submit" class="auth-button"><a href="landing.html">Login</a></button>
+        </form>
+
+        <p class="text-center text-red-500 text-sm mt-2 hidden" id="form-message"></p>
+    </div>
+
+    <script>
+        let profilePic = document.getElementById("profile-pic");
+        let inputFile = document.getElementById("imageInput");
+
+        inputFile.onchange = function () {
+            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginTab = document.getElementById("login-tab");
+            const signupTab = document.getElementById("signup-tab");
+            const loginForm = document.getElementById("login-form");
+            const signupForm = document.getElementById("signup-form");
+            const passwordInput = document.getElementById("signup-password");
+            const confirmPasswordInput = document.getElementById("confirm-password");
+            const passwordMessage = document.getElementById("password-message");
+            const formMessage = document.getElementById("form-message");
+
+            const strongPasswordRegex = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.\W).{8,}$/;
+
+            passwordInput.addEventListener("input", function () {
+                if (!strongPasswordRegex.test(passwordInput.value)) {
+                    passwordMessage.textContent = "Password must contain an uppercase, lowercase, number, special character, and be at least 8 characters.";
+                    passwordMessage.classList.remove("hidden");
+                } else {
+                    passwordMessage.textContent = ""; 
+                    passwordMessage.classList.add("hidden");
+                }
+            });
+
+            signupTab.addEventListener("click", function () {
+                signupForm.classList.remove("hidden");
+                loginForm.classList.add("hidden");
+                signupTab.classList.add("bg-cyan-600", "text-white");
+                loginTab.classList.remove("bg-cyan-600", "text-white");
+                loginTab.classList.add("bg-gray-700", "text-gray-300");
+            });
+
+            loginTab.addEventListener("click", function () {
+                loginForm.classList.remove("hidden");
+                signupForm.classList.add("hidden");
+                loginTab.classList.add("bg-cyan-600", "text-white");
+                signupTab.classList.remove("bg-cyan-600", "text-white");
+                signupTab.classList.add("bg-gray-700", "text-gray-300");
+            });
+
+            signupForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const name = document.getElementById("signup-name").value;
+                const email = document.getElementById("signup-email").value;
+                const password = document.getElementById("signup-password").value;
+                const confirmPassword = confirmPasswordInput.value;
+
+                if (password !== confirmPassword) {
+                    formMessage.textContent = "Passwords do not match!";
+                    formMessage.classList.remove("hidden");
+                    return;
+                }
+
+                localStorage.setItem("name", name);
+                localStorage.setItem("email", email);
+                localStorage.setItem("password", password);
+
+                alert("Sign-up successful! Please log in.");
+                loginTab.click();
+            });
+
+            loginForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const email = document.getElementById("login-email").value;
+                const password = document.getElementById("login-password").value;
+
+                const savedEmail = localStorage.getItem("email");
+                const savedPassword = localStorage.getItem("password");
+
+                if (email === savedEmail && password === savedPassword) {
+                    alert("Login successful! Redirecting...");
+                    window.location.href = "land2.html";
+                } else {
+                    formMessage.textContent = "Invalid email or password!";
+                    formMessage.classList.remove("hidden");
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .input-field {
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .input-field:focus {
+            border-color: cyan;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .auth-button {
+            background: cyan;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: black;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .auth-button:hover {
+            background: rgb(0, 200, 200);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+    </style>
+
+</body>
+</html>

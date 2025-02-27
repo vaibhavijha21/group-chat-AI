@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="#">Chatbot</a>
+            </div>
+            <div class="nav_menu_btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="#contact">CONTACT US</a></li>
+            <li><a href="#why-choose-us">FEATURES</a></li>
+        </ul>
+        <div class="nav__btns">
+            <button class="btn logout-btn">LOGOUT</button> 
+        </div>
+    </nav>
+
+    <div class="container" id="home">
+        <div class="container__left">
+            <h1>Talk. Ask. Solve.</h1>
+            <div class="container__btn">
+                <button class="btn"><a href="http://127.0.0.1:5601/index.html">GET STARTED</a></button>
+            </div>
+        </div>
+        <div class="container__right">
+            <div class="images">
+                <img src="https://i.pinimg.com/736x/b1/45/4f/b1454f410dd850cea59eb9ebcf5aa813.jpg" alt="pic1" class="tent-1"/>
+                <img src="https://i.pinimg.com/736x/7c/bf/f8/7cbff88448f4c039850e5604fd36d08e.jpg" alt="pic2" class="tent-2"/>
+            </div>
+            <div class="content">
+                <h2>Echo AI 🤖</h2>
+                <p> Echo AI is designed to deliver smart, fast, and intuitive conversations. Our chatbot enhances user interaction with real-time responses, advanced AI learning, and a seamless experience. Whether for business or personal use, Echo AI ensures efficiency, accuracy, and engagement like never before.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="why-choose-us" id="why-choose-us">
+        <h2>Why choose Us</h2>
+        <p>Experience the best AI-powered chatbot with cutting-edge features.</p>
+        <div class="features">
+            <div class="feature-card">
+                <i class="ri-customer-service-2-line"></i>
+                <h3>24/7 Support</h3>
+                <p>We are available round the clock to assist you.</p>
+            </div>
+            <div class="feature-card">
+                <i class="ri-lightbulb-flash-line"></i>
+                <h3>Smart AI</h3>
+                <p>Our chatbot continuously learns and improves responses.</p>
+            </div>
+            <div class="feature-card">
+                <i class="ri-shield-check-line"></i>
+                <h3>Secure</h3>
+                <p>Your data is encrypted and securely stored.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us" id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? Get in touch with us!</p>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Echo AI. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+            <div class="footer-socials">
+                <a href="#"><i class="ri-facebook-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-linkedin-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="http://unpkg.com/scrollreveal"></script>
+    <script src="landing.js"></script>
+</body>
+</html>
