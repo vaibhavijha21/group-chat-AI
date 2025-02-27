@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #323131;
+    /* Dark background */
+    margin: 0;
+    color: white;
+    /* Light text for readability */
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.chat-container {
+    width: 550px;
+    /* Reduced chatbot size */
+    height: 650px;
+    /* Reduced chatbot height */
+    padding: 15px;
+    background: #1e1e1e;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.group-chat-container {
+    width: 600px;
+    /* Kept group chat larger */
+    height: 1000px;
+    /* Balanced height */
+    padding: 20px;
+    background: #1e1e1e;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#chatBox,
+#groupChatBox {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #333;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    background: #252525;
+    color: white;
+    border-radius: 5px;
+}
+
+input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #444;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #28a745;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #218838;
+}
+
+#userList {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+
+#userList li {
+    padding: 5px;
+    border-bottom: 1px solid #444;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chat-container,
+    .group-chat-container {
+        width: 90%;
+        height: auto;
+    }
+}
+
