@@ -1,4 +1,4 @@
-const socket = io("http://localhost:5000");
+const socket = io("https://group-chat-ai-dgiz.onrender.com");
 
 document.getElementById("sendBtn").addEventListener("click", () => {
     sendMessage();
