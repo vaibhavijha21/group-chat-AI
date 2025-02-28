@@ -40,7 +40,7 @@
         <form id="login-form" class="form mt-4 flex flex-col gap-4 hidden">
             <input type="email" id="login-email" placeholder="Email" class="input-field" required>
             <input type="password" id="login-password" placeholder="Password" class="input-field" required>
-            <button type="submit" class="auth-button"><a href="landing.html">Login</a></button>
+            <button type="submit" class="auth-button">Login</button>
         </form>
 
         <p class="text-center text-red-500 text-sm mt-2 hidden" id="form-message"></p>
@@ -66,13 +66,20 @@
 
             const strongPasswordRegex = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.\W).{8,}$/;
 
+            // Password Strength Validation (Message disappears when strong)
             passwordInput.addEventListener("input", function () {
                 if (!strongPasswordRegex.test(passwordInput.value)) {
                     passwordMessage.textContent = "Password must contain an uppercase, lowercase, number, special character, and be at least 8 characters.";
                     passwordMessage.classList.remove("hidden");
                 } else {
-                    passwordMessage.textContent = ""; 
-                    passwordMessage.classList.add("hidden");
+                    passwordMessage.classList.add("hidden"); // Hide message when strong
+                }
+            });
+
+            // Hide "Passwords do not match" error when they match
+            confirmPasswordInput.addEventListener("input", function () {
+                if (passwordInput.value === confirmPasswordInput.value) {
+                    formMessage.classList.add("hidden"); // Hide the message
                 }
             });
 
@@ -123,7 +130,7 @@
 
                 if (email === savedEmail && password === savedPassword) {
                     alert("Login successful! Redirecting...");
-                    window.location.href = "land2.html";
+                    window.location.href = "landing.html";
                 } else {
                     formMessage.textContent = "Invalid email or password!";
                     formMessage.classList.remove("hidden");

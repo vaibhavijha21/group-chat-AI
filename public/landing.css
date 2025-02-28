@@ -489,7 +489,6 @@ html {
 .contact-us {
   text-align: center;
   padding: 4rem 2rem;
-  /* background: #f3eae5; */
 }
 
 .contact-us h2 {
@@ -537,4 +536,7 @@ html {
   font-weight: bold;
   color: #28a745;
   margin-bottom: 1rem;
+}
+.button a{
+  text-decoration:none ;
 }
